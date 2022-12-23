@@ -1,0 +1,120 @@
+
+.head {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 83px;
+}
+
+.head .cloudy {
+    width: 114px;
+    background-image: url('./assets/weather-icon-cloudy.png');
+}
+
+.head .rainy {
+    width: 100px;
+    background-image: url('./assets/weather-icon-rainy.png');
+}
+
+.head .sunny {
+    width: 88px;
+    background-image: url('./assets/weather-icon-sunny.png');
+}
+
+.head .icon {
+    margin-right: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 88px;
+}
+
+.head .current-date {
+    display: flex;
+    flex-direction: column;
+}
+
+.head .current-date p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: $color1;
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.head .current-date span {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: $color1;
+    text-transform: uppercase;
+}
+
+@media screen and (max-width: 1200px) {
+    .head {
+        align-items: center;
+        margin-bottom: 50px;
+    }
+    .head .cloudy {
+        width: 114px - 20px;
+        background-image: url('./assets/weather-icon-cloudy.png');
+    }
+
+    .head .rainy {
+        width: 100px - 20px;
+        background-image: url('./assets/weather-icon-rainy.png');
+    }
+
+    .head .sunny {
+        width: 88px - 20px;
+        background-image: url('./assets/weather-icon-sunny.png');
+    }
+
+    .head .icon {
+        margin-right: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 88px - 20px;
+    }
+
+
+    .head .current-date p {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .head {
+         align-items: center;
+         margin-bottom: 50px;
+    }
+    .head .cloudy {
+        width: 114px - 30px;
+        background-image: url('./assets/weather-icon-cloudy.png');
+    }
+
+    .head .rainy {
+        width: 100px - 30px;
+        background-image: url('./assets/weather-icon-rainy.png');
+    }
+
+    .head .sunny {
+        width: 88px - 30px;
+        background-image: url('./assets/weather-icon-sunny.png');
+    }
+
+    .head .icon {
+        margin-right: 20px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 88px - 30px;
+    }
+
+
+    .head .current-date p {
+        margin-top: 0;
+        margin-bottom: 5px;
+    }
+
+}

@@ -1,0 +1,158 @@
+
+
+.filter {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.filter .checkbox {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: $color1;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.filter .checkbox:hover {
+    cursor: pointer;
+}
+
+.filter .checkbox::after {
+    content: '';
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: solid 1px $color1;
+    border-radius: 3px;
+    margin-left: 14px;
+}
+
+.filter .checkbox.selected::before {
+    content: '✓';
+    position: absolute;
+    right: 7px;
+}
+
+.filter .checkbox.blocked {
+    cursor: initial;
+}
+
+.filter .custom-input {
+    margin-bottom: 26px;
+}
+
+.filter .custom-input label {
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: $color1;
+    margin-right: 14px;
+}
+
+.filter .custom-input input {
+    border-bottom: solid 1px $color1;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: transparent;
+    width: 40px;
+    outline: none;
+    color: $color1;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    text-align: center;
+}
+
+.filter button {
+    background-color: $color2;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: $color1;
+    text-transform: uppercase;
+}
+
+.filter button:hover {
+    cursor: pointer;
+    background-color: $color3;
+}
+
+.filter button:disabled {
+    opacity: 0.3;
+}
+
+.filter button:disabled:hover {
+    cursor: not-allowed;
+    background-color: $color2;
+}
+
+.filter input:disabled:hover {
+    cursor: not-allowed;
+}
+
+.filter-btn {
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .filter-btn { 
+        margin: 20px 0 0 auto;
+        background: transparent;
+        border: unset;
+        display: block;
+        position: relative;
+        z-index: 9999;
+
+        &::before{
+            content: '';
+            display: block;
+            width: 30px;
+            height: 30px;
+            background: transparent url(./assets/filter.svg) center center no-repeat;
+            background-size: contain;
+            border: unset;
+        }
+        
+        &.active::before{
+            content: '';
+            display: block;
+            width: 30px;
+            height: 30px;
+            background: transparent url(./assets/close.svg) center center no-repeat;
+            background-size: contain;
+            border: unset;
+        }
+
+        &.active + .filter { 
+            display: flex;
+        }
+    }
+
+    .filter { 
+        background: rgb(165,106,165);
+        background-size: cover;
+        width: calc(100% - 20px);
+        z-index: 999;
+        top: 10px;
+        right: 10px;
+        padding: 20px;
+        padding-top: 70px;
+        align-items: flex-start;
+        display: none;
+    }
+}

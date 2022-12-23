@@ -1,0 +1,107 @@
+
+.current-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+    .temperature {
+        position: relative;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 200;
+        font-size: 350px;
+        line-height: 1;
+        color: $color1;
+        margin-bottom: 50px;
+
+        &::after {
+            position: absolute;
+            top: 37px;
+            right: -50px;
+            content: '';
+            display: inline-block;
+            width: 37px;
+            height: 37px;
+            border: solid 5px $color1;
+            border-radius: 50%;
+        }
+    }
+
+    .meta span {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 200;
+        font-size: 32px;
+        color: $color1;
+        display: inline-flex;
+        align-items: center;
+
+        &:first-child {
+            margin-right: 81px;
+        }
+    }
+
+    .rainy::before {
+        content: '';
+        display: inline-block;
+        width: 26px;
+        height: 26px;
+        background-image: url('./assets/rainy.png');
+        margin-right: 11px;
+    }
+
+    .humidity::before {
+        content: '';
+        display: inline-block;
+        width: 19px;
+        height: 28px;
+        background-image: url('./assets/humidity.png');
+        margin-right: 11px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .current-weather {
+        margin-bottom: 50px;
+
+        .temperature {
+            font-size: 212px;
+            margin-bottom: 40px;
+    
+            &::after {
+                top: 20px;
+                right: -10px;
+                width: 20px;
+                height: 20px;
+                border: solid 3px $color1;
+            }
+        }
+
+        .meta span {
+            font-size: 24px;
+            font-weight: 300;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .current-weather {
+        margin-bottom: 50px;
+
+        .temperature {
+            font-size: 102px;
+            margin-bottom: 40px;
+    
+            &::after {
+                top: 10px;
+                right: -10px;
+                width: 10px;
+                height: 10px;
+                border: solid 3px $color1;
+            }
+        }
+
+        .meta span {
+            font-size: 24px;
+            font-weight: 300;
+        }
+    }
+}

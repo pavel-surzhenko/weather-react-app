@@ -1,0 +1,49 @@
+{
+    "name": "weather",
+    "version": "1.0.2",
+    "private": true,
+    "author": {
+        "email": "admin@lectrum.io",
+        "name": "Lectrum Team"
+    },
+    "license": "MIT",
+    "scripts": {
+        "dev": "react-scripts --openssl-legacy-provider start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject",
+        "start": "npm run build && serve -s build",
+        "format": "prettier-eslint --list-different $PWD/'src/**/*.{js,jsx}'; prettier-eslint --write $PWD/'src/**/*.{js,jsx}'",
+        "lint": "eslint ./src/** --ext .{js,jsx} -c .eslintrc --no-error-on-unmatched-pattern",
+        "lint:fix": "eslint ./src/** --ext .{js,jsx} -c .eslintrc --no-error-on-unmatched-pattern --fix"
+    },
+    "engines": {
+        "node": ">=14.x"
+    },
+    "dependencies": {
+        "@hookform/resolvers": "2.8.4",
+        "axios": "0.24.0",
+        "date-fns": "2.27.0",
+        "mobx": "^6.3.8",
+        "mobx-react-lite": "^3.2.2",
+        "mobx-utils": "^6.0.4",
+        "react": "17.0.2",
+        "react-dom": "17.0.2",
+        "react-loader-spinner": "^4.0.0",
+        "react-query": "3.34.0",
+        "react-scripts": "4.0.3",
+        "yup": "0.32.11"
+    },
+    "devDependencies": {
+        "@babel/eslint-parser": "^7.16.3",
+        "@babel/plugin-proposal-class-properties": "^7.16.0",
+        "@babel/plugin-syntax-jsx": "^7.16.0",
+        "@sotream/eslint-config-react-js": "0.1.0",
+        "eslint": "7.32.0",
+        "eslint-config-prettier": "8.3.0",
+        "prettier-eslint": "13.0.0",
+        "prettier-eslint-cli": "5.0.1",
+        "sass": "1.44.0",
+        "serve": "13.0.2"
+    }
+}

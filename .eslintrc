@@ -1,0 +1,6 @@
+{
+  "parser": "@babel/eslint-parser",
+  "extends": [
+      "@sotream/eslint-config-react-js"
+  ]
+}
