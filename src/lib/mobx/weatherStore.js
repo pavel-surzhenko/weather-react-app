@@ -1,39 +1,36 @@
 // Core
-import { makeAutoObservable } from 'mobx';
-import { computedFn } from 'mobx-utils';
+import { makeAutoObservable } from "mobx";
+import { computedFn } from "mobx-utils";
 
 export class WeatherStore {
-    type = '';
-    minTemperature = '';
-    maxTemperature = '';
+    type = "";
+    minTemperature = "";
+    maxTemperature = "";
     isFiltered = false;
-    selectedDayId = '';
+    selectedDayId = "";
 
     constructor() {
-        this
-            .filteredDays = computedFn((days) => {
-                const filteredDays = days.filter((day) => {
-                    const isCorrectType = this.type
-                        ? this.type === day.type
-                        : true;
-                    const isCorrectMinTemperature = this.minTemperature
-                        ? this.minTemperature <= String(day.temperature)
-                        : true;
-                    const isCorrectMaxTemperature = this.maxTemperature
-                        ? this.maxTemperature >= String(day.temperature)
-                        : true;
+        this.filteredDays = computedFn((days) => {
+            const filteredDays = days.filter((day) => {
+                const isCorrectType = this.type ? this.type === day.type : true;
+                const isCorrectMinTemperature = this.minTemperature
+                    ? this.minTemperature <= String(day.temperature)
+                    : true;
+                const isCorrectMaxTemperature = this.maxTemperature
+                    ? this.maxTemperature >= String(day.temperature)
+                    : true;
 
-                    return (
-                        isCorrectType
-                    && isCorrectMinTemperature
-                    && isCorrectMaxTemperature
-                    );
-                });
-
-                return filteredDays;
+                return (
+                    isCorrectType &&
+                    isCorrectMinTemperature &&
+                    isCorrectMaxTemperature
+                );
             });
 
-        makeAutoObservable(this);
+            return filteredDays;
+        });
+
+        makeAutoObservable(this, { rootStore: false }, { autoBind: true });
     }
 
     setType(type) {
@@ -65,7 +62,11 @@ export class WeatherStore {
     }
 
     get isFormBlocked() {
-        return this.type === '' && this.minTemperature === '' && this.maxTemperature === '';
+        return (
+            this.type === "" &&
+            this.minTemperature === "" &&
+            this.maxTemperature === ""
+        );
     }
 
     setSelectedDayId(id) {
@@ -73,9 +74,9 @@ export class WeatherStore {
     }
 
     resetFilter() {
-        this.maxTemperature = '';
-        this.minTemperature = '';
-        this.type = '';
+        this.maxTemperature = "";
+        this.minTemperature = "";
+        this.type = "";
         this.isFiltered = false;
     }
 }
