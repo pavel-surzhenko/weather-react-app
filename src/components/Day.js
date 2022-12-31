@@ -5,7 +5,6 @@ import { useStore } from "../hooks/useStore";
 export const Day = observer((props) => {
     const dayOfWeek = format(new Date(props.day), "EEEE");
     const { selectedDayId, setSelectedDayId } = useStore();
-    console.log(selectedDayId);
 
     const handleClick = () => {
         setSelectedDayId(props.id);
