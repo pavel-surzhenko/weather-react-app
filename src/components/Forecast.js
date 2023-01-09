@@ -28,7 +28,11 @@ export const Forecast = observer(() => {
 
     return (
         <div className="forecast">
-            {isFetched ? DayJSX.length > 0 ? DayJSX : "lol" : <Loading />}
+            {DayJSX.length > 0 ? (
+                DayJSX
+            ) : (
+                <p className="message"> No days were found for this filter</p>
+            )}
         </div>
     );
 });
