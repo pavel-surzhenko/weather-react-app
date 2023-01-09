@@ -1,30 +1,41 @@
 import { observer } from "mobx-react-lite";
 import { format } from "date-fns";
+import { useState, useEffect } from "react";
 import { useStore, useWeather } from "../hooks";
 import { Loading } from "./Loading";
 
 export const Head = observer(() => {
     const { selectedDayId } = useStore();
     const { data, isFetched } = useWeather();
+    const [currentDay, setCurrentDay] = useState();
 
-    const currentDay = data.find((day) => day.id === selectedDayId);
-
-    const dayOfWeek = format(
-        new Date(currentDay?.day ? currentDay.day : "00000"),
-        "EEEE"
-    );
-    const dayOfMonth = format(
-        new Date(currentDay?.day ? currentDay.day : "00000"),
-        "PP"
-    );
+    useEffect(() => {
+        if (selectedDayId) {
+            const selectedDay =
+                isFetched && data.find((day) => day.id === selectedDayId);
+            setCurrentDay(selectedDay);
+        }
+    }, [selectedDayId]);
 
     return (
-        <div className="head">
-            <div className="icon cloudy"></div>
-            <div className="current-date">
-                <p>{isFetched ? dayOfWeek : <Loading />}</p>
-                <span>{dayOfMonth}</span>
-            </div>
-        </div>
+        <>
+            {selectedDayId ? (
+                <div className="head">
+                    <div className={`icon ${currentDay?.type}`}></div>
+                    <div className="current-date">
+                        <p>
+                            {currentDay &&
+                                format(new Date(currentDay?.day), "eeee")}
+                        </p>
+                        <span>
+                            {currentDay &&
+                                format(new Date(currentDay?.day), "dd MMMM")}
+                        </span>
+                    </div>
+                </div>
+            ) : (
+                ""
+            )}
+        </>
     );
 });

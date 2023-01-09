@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { observer } from "mobx-react-lite";
 import { useEffect, useState } from "react";
 import { useStore } from "../hooks/useStore";
@@ -8,7 +9,7 @@ import { Loading } from "./Loading";
 
 export const Forecast = observer(() => {
     const { data, isFetched } = useWeather();
-    const { selectedDayId, setSelectedDayId, isFiltered, filteredDays } =
+    const { setSelectedDayId, isFiltered, filteredDays, selectedDayId } =
         useStore();
 
     const [weatherList, setWeatherList] = useState([]);
@@ -25,5 +26,9 @@ export const Forecast = observer(() => {
         isFetched &&
         weatherList.slice(0, 7).map((day) => <Day key={day.id} {...day} />);
 
-    return <div className="forecast">{isFetched ? DayJSX : <Loading />}</div>;
+    return (
+        <div className="forecast">
+            {isFetched ? DayJSX.length > 0 ? DayJSX : "lol" : <Loading />}
+        </div>
+    );
 });
