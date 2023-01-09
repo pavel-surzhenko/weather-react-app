@@ -2,6 +2,7 @@
     "name": "weather",
     "version": "1.0.2",
     "private": true,
+    "homepage": "https://pavel-surzhenko.github.io/weather-react-app",
     "scripts": {
         "dev": "react-scripts --openssl-legacy-provider start",
         "build": "react-scripts build",
@@ -10,7 +11,9 @@
         "start": "npm run build && serve -s build",
         "format": "prettier-eslint --list-different $PWD/'src/**/*.{js,jsx}'; prettier-eslint --write $PWD/'src/**/*.{js,jsx}'",
         "lint": "eslint ./src/** --ext .{js,jsx} -c .eslintrc --no-error-on-unmatched-pattern",
-        "lint:fix": "eslint ./src/** --ext .{js,jsx} -c .eslintrc --no-error-on-unmatched-pattern --fix"
+        "lint:fix": "eslint ./src/** --ext .{js,jsx} -c .eslintrc --no-error-on-unmatched-pattern --fix",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d build"
     },
     "engines": {
         "node": ">=14.x"
@@ -37,6 +40,7 @@
         "@sotream/eslint-config-react-js": "0.1.0",
         "eslint": "7.32.0",
         "eslint-config-prettier": "8.3.0",
+        "gh-pages": "^4.0.0",
         "prettier-eslint": "13.0.0",
         "prettier-eslint-cli": "5.0.1",
         "sass": "1.44.0",
