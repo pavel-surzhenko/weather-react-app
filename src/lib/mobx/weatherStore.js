@@ -1,5 +1,5 @@
 // Core
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import { computedFn } from "mobx-utils";
 
 export class WeatherStore {
@@ -46,9 +46,9 @@ export class WeatherStore {
     }
 
     applyFilter(filter) {
-        if (filter.type) {
-            this.type = filter.type;
-        }
+        // if (filter.type) {
+        //     this.type = filter.type;
+        // }
 
         if (filter.minTemperature) {
             this.minTemperature = filter.minTemperature;
