@@ -3,36 +3,14 @@ import { useForm } from "react-hook-form";
 import { useStore, useWeather } from "../hooks";
 
 export const Filter = observer(() => {
-    const { register, handleSubmit } = useForm();
-    const {
-        type,
-        isFiltered,
-        setType,
-        setMinTemperature,
-        setMaxTemperature,
-        applyFilter,
-        resetFilter,
-        filteredDays,
-        isFormBlocked,
-    } = useStore();
-
-    const { data } = useWeather();
-
-    const onSubmit = (formData) => {
-        setMinTemperature(formData.min);
-        setMaxTemperature(formData.max);
-        applyFilter(formData);
-        filteredDays(data);
-    };
+    const store = useStore();
+    const { type, isFiltered, minTemperature, maxTemperature, isFormBlocked } =
+        store;
 
     return (
-        <form
-            onSubmit={handleSubmit(onSubmit)}
-            // onReset={resetFilter()}
-            className="filter"
-        >
+        <div className="filter">
             <span
-                onClick={() => !isFiltered && setType("cloudy")}
+                onClick={() => !isFiltered && store.setType("cloudy")}
                 className={`checkbox ${type === "cloudy" ? "selected" : ""} ${
                     isFiltered ? "blocked" : ""
                 }`}
@@ -43,34 +21,53 @@ export const Filter = observer(() => {
                 className={`checkbox ${type === "sunny" ? "selected" : ""} ${
                     isFiltered ? "blocked" : ""
                 }`}
-                onClick={() => !isFiltered && setType("sunny")}
+                onClick={() => !isFiltered && store.setType("sunny")}
             >
                 Sunny
             </span>
             <p className="custom-input">
                 <label htmlFor="min-temperature">minimum temperature</label>
                 <input
-                    {...register("minTemperature")}
-                    name="minTemperature"
+                    value={minTemperature}
                     id="min-temperature"
-                    type="text"
+                    type="number"
+                    disabled={isFiltered}
+                    onChange={(event) =>
+                        store.setMinTemperature(event.target.value)
+                    }
                 />
             </p>
             <p className="custom-input">
                 <label htmlFor="max-temperature">maximum temperature</label>
                 <input
-                    {...register("maxTemperature")}
-                    name="maxTemperature"
+                    value={maxTemperature}
                     id="max-temperature"
-                    type="text"
+                    type="number"
+                    disabled={isFiltered}
+                    onChange={(event) =>
+                        store.setMaxTemperature(event.target.value)
+                    }
                 />
             </p>
-            <button
-                disabled={isFormBlocked}
-                type={isFiltered ? "reset" : "submit"}
-            >
-                {isFiltered ? "reset" : "filter out"}
-            </button>
-        </form>
+            {isFiltered ? (
+                <button type="submit" onClick={() => store.resetFilter()}>
+                    Reset
+                </button>
+            ) : (
+                <button
+                    type="submit"
+                    disabled={isFormBlocked}
+                    onClick={() =>
+                        store.applyFilter({
+                            type,
+                            minTemperature,
+                            maxTemperature,
+                        })
+                    }
+                >
+                    Filter out
+                </button>
+            )}
+        </div>
     );
 });

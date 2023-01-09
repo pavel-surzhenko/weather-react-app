@@ -1,5 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "../hooks/useStore";
 
 import { useWeather } from "../hooks/useWeather";
@@ -11,21 +11,19 @@ export const Forecast = observer(() => {
     const { selectedDayId, setSelectedDayId, isFiltered, filteredDays } =
         useStore();
 
-    const DayJSX = isFiltered
-        ? filteredDays(data).map((day) => <Day key={day.id} {...day} />)
-        : data.map((day) => <Day key={day.id} {...day} />);
+    const [weatherList, setWeatherList] = useState([]);
 
     useEffect(() => {
-        if (!selectedDayId && isFetched) {
-            setSelectedDayId(data[0].id);
+        if (isFetched) {
+            const weather = isFiltered ? filteredDays(data) : data;
+            setWeatherList(weather);
+            setSelectedDayId(weather[0]?.id || "");
         }
-    });
+    }, [isFiltered, isFetched]);
 
-    useEffect(() => {
-        if (isFiltered) {
-            setSelectedDayId(filteredDays(data)[0].id);
-        }
-    }, [isFiltered]);
+    const DayJSX =
+        isFetched &&
+        weatherList.slice(0, 7).map((day) => <Day key={day.id} {...day} />);
 
     return <div className="forecast">{isFetched ? DayJSX : <Loading />}</div>;
 });

@@ -5,9 +5,7 @@ const WEATHER_API_URL = process.env.REACT_APP_WEATHER_API_URL;
 
 export const api = Object.freeze({
     async getWeather() {
-        const { data } = await axios.get(
-            `${WEATHER_API_URL}/rtx/api/forecast?limit=7`
-        );
+        const { data } = await axios.get(`${WEATHER_API_URL}/rtx/api/forecast`);
 
         return data.data;
     },

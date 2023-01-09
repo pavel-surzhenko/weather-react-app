@@ -37,6 +37,7 @@ export class WeatherStore {
         this.type = type;
     }
 
+
     setMinTemperature(temp) {
         this.minTemperature = temp;
     }
@@ -46,9 +47,9 @@ export class WeatherStore {
     }
 
     applyFilter(filter) {
-        // if (filter.type) {
-        //     this.type = filter.type;
-        // }
+        if (filter.type) {
+            this.type = filter.type;
+        }
 
         if (filter.minTemperature) {
             this.minTemperature = filter.minTemperature;

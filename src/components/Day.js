@@ -3,7 +3,6 @@ import { observer } from "mobx-react-lite";
 import { useStore } from "../hooks/useStore";
 
 export const Day = observer((props) => {
-    const dayOfWeek = format(new Date(props.day), "EEEE");
     const { selectedDayId, setSelectedDayId } = useStore();
 
     const handleClick = () => {
@@ -17,7 +16,7 @@ export const Day = observer((props) => {
                 props.id === selectedDayId ? "selected" : ""
             }`}
         >
-            <p>{dayOfWeek}</p>
+            <p>{format(new Date(props.day), "EEEE")}</p>
             <span>{props.temperature}</span>
         </div>
     );
