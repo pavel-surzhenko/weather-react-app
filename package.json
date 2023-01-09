@@ -2,7 +2,6 @@
     "name": "weather",
     "version": "1.0.2",
     "private": true,
-    "license": "MIT",
     "scripts": {
         "dev": "react-scripts --openssl-legacy-provider start",
         "build": "react-scripts build",
