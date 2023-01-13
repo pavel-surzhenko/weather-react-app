@@ -5,7 +5,7 @@
     "homepage": "https://pavel-surzhenko.github.io/weather-react-app/",
     "scripts": {
         "dev": "react-scripts --openssl-legacy-provider start",
-        "build": "react-scripts build",
+        "build": "react-scripts --openssl-legacy-provider build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "start": "npm run build && serve -s build",
@@ -22,6 +22,7 @@
         "@hookform/resolvers": "2.8.4",
         "axios": "0.24.0",
         "date-fns": "2.27.0",
+        "gh-pages": "^4.0.0",
         "mobx": "^6.3.8",
         "mobx-react-lite": "^3.2.2",
         "mobx-utils": "^6.0.4",
@@ -30,7 +31,6 @@
         "react-hook-form": "^7.41.5",
         "react-loader-spinner": "^4.0.0",
         "react-query": "3.34.0",
-        "react-scripts": "^5.0.1",
         "yup": "0.32.11"
     },
     "devDependencies": {
@@ -40,9 +40,9 @@
         "@sotream/eslint-config-react-js": "0.1.0",
         "eslint": "7.32.0",
         "eslint-config-prettier": "8.3.0",
-        "gh-pages": "^4.0.0",
         "prettier-eslint": "13.0.0",
         "prettier-eslint-cli": "5.0.1",
+        "react-scripts": "^4.0.2",
         "sass": "1.44.0",
         "serve": "13.0.2"
     }
