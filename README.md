@@ -1,9 +1,10 @@
 # My first react-app Weather 🚀
 
-# About
+## About
+
 ```sh
 The weather app shows the weather forecast for 7 days
-Displays: **day of the week**, **date**, **month**, **temperature**, **humidity**, chance of rain and the type of day (**sunny**, **cloudy**, **rainy**)
+Displays: day of the week, date, month, temperature, humidity, </br> chance of rain and the type of day (**sunny**, **cloudy**, **rainy**)
 By default, the weather for **today is selected**, but the user has the ability to switch the day by clicking on another day at the bottom of the page
 The application **can filter** days according to specified criteria. (Day type: cloudy or rainy, minimum temperature, maximum temperature)
 
@@ -11,7 +12,7 @@ Using MobX, React Query(for api), date-fns (for date)
 ```
 
 
-1.To install dependencies, run:
+### 1.To install dependencies, run:
 
 ```sh
 yarn
@@ -19,7 +20,7 @@ yarn
 npm i
 ```
 
-2. To start the project, run:
+### 2. To start the project, run:
 
 ```sh
 yarn dev
@@ -27,7 +28,7 @@ yarn dev
 npm run dev
 ```
 
-3. To build the project run:
+### 3. To build the project run:
 
 ```sh
 yarn build
@@ -35,7 +36,7 @@ yarn build
 npm run build
 ```
 
-4. To run the project in `production` mode, run:
+### 4. To run the project in `production` mode, run:
 
 ```sh
 yarn build && yarn start  
