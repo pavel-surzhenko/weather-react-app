@@ -4,9 +4,15 @@
 
 ```sh
 The weather app shows the weather forecast for 7 days
-Displays: **day** of the week, date, month, temperature, humidity, </br> chance of rain and the type of day (**sunny**, **cloudy**, **rainy**)
-By default, the weather for **today is selected**, but the user has the ability to switch the day by clicking on another day at the bottom of the page
-The application **can filter** days according to specified criteria. (Day type: cloudy or rainy, minimum temperature, maximum temperature)
+
+Displays: day of the week, date, month, temperature, humidity, 
+chance of rain and the type of day (sunny, cloudy, rainy)
+
+By default, the weather for today is selected, but the user has the ability to switch 
+the day by clicking on another day at the bottom of the page
+
+The application can filter days according to specified criteria.
+(Day type: cloudy or rainy, minimum temperature, maximum temperature)
 
 Using MobX, React Query(for api), date-fns (for date) 
 ```
